@@ -1,1 +1,123 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MS Hearts</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        background: linear-gradient(135deg, #ffe4ec, #ffc2d5, #fff0f5);
+        font-family: Arial, sans-serif;
+    }
+
+    .heart {
+        position: absolute;
+        width: 45px;
+        height: 45px;
+        background: #ff4f87;
+        transform: rotate(-45deg);
+        animation: float 5s infinite ease-in-out;
+        box-shadow: 0 4px 15px #ff8eae;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: "";
+        position: absolute;
+        width: 45px;
+        height: 45px;
+        background: #ff4f87;
+        border-radius: 50%;
+    }
+
+    .heart::before {
+        top: -22px;
+        left: 0;
+    }
+
+    .heart::after {
+        left: 22px;
+        top: 0;
+    }
+
+    .heart span {
+        position: absolute;
+        z-index: 2;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        transform: rotate(45deg);
+        top: 15px;
+        left: 12px;
+        white-space: nowrap;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            translate: 0 0;
+        }
+        50% {
+            translate: 0 -35px;
+        }
+    }
+
+    .title {
+        position: absolute;
+        top: 40%;
+        width: 100%;
+        text-align: center;
+        color: #e72f70;
+        font-size: 35px;
+        font-weight: bold;
+        text-shadow: 2px 2px 10px white;
+        z-index: 5;
+    }
+
+    .subtitle {
+        position: absolute;
+        top: 49%;
+        width: 100%;
+        text-align: center;
+        color: #b52d61;
+        font-size: 17px;
+        z-index: 5;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="title">♥ MS ♥</div>
+<div class="subtitle">Little hearts, endless sweetness</div>
+
+<script>
+    for (let i = 0; i < 35; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+
+        heart.innerHTML = "<span>MS</span>";
+
+        heart.style.left = Math.random() * 95 + "%";
+        heart.style.top = Math.random() * 90 + "%";
+
+        let size = 0.5 + Math.random() * 0.8;
+        heart.style.scale = size;
+
+        heart.style.animationDuration =
+            (3 + Math.random() * 4) + "s";
+
+        heart.style.animationDelay =
+            Math.random() * 4 + "s";
+
+        document.body.appendChild(heart);
+    }
+</script>
+
+</body>
+</html>
+
